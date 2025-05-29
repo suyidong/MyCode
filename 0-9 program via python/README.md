@@ -2,21 +2,6 @@
 
 This repository contains a simple Convolutional Neural Network (CNN) model implemented in Python to classify the MNIST dataset. The MNIST dataset is a collection of handwritten digits commonly used for training and testing in the field of machine learning.
 
-## Project Structure
-
-project_root/
-│
-├── model/                # Subdirectory containing model-related files
-│   ├── CNN.py            # Implementation of the CNN model
-│   ├── init.py           # Initialization file for the model package
-│   └── mnist_dataset.py  # Script for loading and preprocessing the MNIST dataset
-│
-├── README.md             # This file, containing information about the project
-├── main.py               # Main script to run the trained model for prediction and includes a GUI implementation
-├── mnist_save.py         # Script for saving the MNIST dataset
-├── package.spec          # Specification file for packaging the project (if applicable)
-└── train.py              # Script for training the model
-
 ## Getting Started
 
 1. **Prerequisites**
