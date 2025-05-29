@@ -17,7 +17,7 @@ a = Analysis(
     # 这里仅是应附带的文件
     datas=[
         ('CNN.py'...),
-	    ('mnist_dataset.py'...),
+	('mnist_dataset.py'...),
         ('__init__.py'...),
         ('best_model.pth'...),
         ('last.pt'...)
