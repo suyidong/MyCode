@@ -36,8 +36,8 @@ a = Analysis(
         'torch.optim',
         'torch.utils.data',
         'torchsummary',
-        'models.CNN',
-        'models.mnist_dataset'
+        'model.CNN',
+        'model.mnist_dataset'
     ],
     
     # 其他参数
