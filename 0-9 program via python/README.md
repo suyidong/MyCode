@@ -6,7 +6,7 @@ This repository contains a simple Convolutional Neural Network (CNN) model imple
 
 1. **Prerequisites**
    - Python 3.x
-   - Necessary libraries (e.g., NumPy, TensorFlow, Keras)
+   - Necessary libraries (e.g., NumPy)
 
 2. **Saving the Data**
    - After training, you can save the model using:
