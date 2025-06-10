@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # 设置您的序列目录路径
-sequence_dir = r"C:\Users\yvonn\Desktop\生物物理\结课论文重做\all_sequences"
+sequence_dir = r"way\to\your\path"
 
 # 获取所有FASTA文件
 fasta_files = list(Path(sequence_dir).glob("*.fasta")) + \
@@ -38,20 +38,12 @@ clustal_input = f"""# 以下是自动生成的 {len(fasta_files)} 个FASTA文件
 {combined_sequences}"""
 
 # 保存到桌面方便使用
-desktop_path = Path.home() / "Desktop" / "clustal_input.txt"
+desktop_path = Path.home() / "Desktop" / "input.fasta"
 with open(desktop_path, 'w') as output_file:
     output_file.write(clustal_input)
 
 print("="*80)
-print("操作成功！请按以下步骤使用：")
-print(f"1. 已生成文件: {desktop_path}")
-print("2. 打开 Clustal Omega 在线版: https://www.ebi.ac.uk/Tools/msa/clustalo/")
-print("3. 在 'STEP 1 - Enter your input sequences' 文本框中:")
-print("   - 按 Ctrl+A 全选生成文件内容")
-print("   - 按 Ctrl+C 复制")
-print("   - 切换到浏览器窗口，在输入框中按 Ctrl+V 粘贴")
-print("4. 点击 'Submit' 运行分析")
-print("="*80)
+print("操作成功！")
 print(f"包含文件数: {len(fasta_files)}")
 print(f"总序列数: {combined_sequences.count('>')}")
 print(f"输出文件位置: {desktop_path}")
