@@ -4,7 +4,7 @@ This repository contains Python scripts for running the SISSO (Sure Independence
 
 ## Overview
 
-The SISSO algorithm is a powerful method for feature selection and model construction in scientific domains where interpretable models are essential. These scripts offer the basic SISSO implementation using TorchSisso.
+The SISSO algorithm is a powerful method for feature selection and model construction in scientific domains where interpretable models are essential. These scripts offer the basic SISSO implementation using TorchSisso. And the two validation techniques is added to assess model stability.
 ## Files Description
 
 ### 1. SISSO+seed.py
@@ -25,14 +25,13 @@ Implements stratified 5-fold cross-validation for SISSO models. This approach en
 - GPU support detection and utilization
 - Comprehensive parity plots for visualization
 
-### 3. sissotext.py
-Basic implementation of the SISSO algorithm for training and testing on fixed datasets. This serves as the foundation for the more advanced validation techniques.
+### 3. SISSO.py
+Basic implementation of the SISSO algorithm for training and testing on selected datasets. This is the basic SISSO implementation using TorchSisso [1].
 
 **Key features:**
 - Standard SISSO model training and evaluation
 - Customizable operator set
 - Detailed parity plot visualization
-- Performance metrics calculation
 
 ## Requirements
 
@@ -42,15 +41,7 @@ Basic implementation of the SISSO algorithm for training and testing on fixed da
 - numpy
 - scikit-learn
 - matplotlib
-- sympy
 - torch
-
-Install required packages:
-```bash
-pip install pandas numpy scikit-learn matplotlib sympy torch
-```
-
-For TorchSisso, please follow installation instructions from the official repository.
 
 ## Usage
 
@@ -76,10 +67,10 @@ Input data should be in Excel format with the following structure:
 - Target: A column named "Target" containing the dependent variable
 
 Example dataset structure:
-| Feature1 | Feature2 | Feature3 | ... | Target |
-|----------|----------|----------|-----|--------|
-| 1.2      | 0.5      | 3.4      | ... | 5.6    |
-| 2.1      | 1.2      | 4.1      | ... | 7.2    |
+| Target | Feature1 | Feature2 | Feature3 | ... | 
+|--------|----------|----------|----------|-----|
+| 5.6    | 1.2      | 0.5      | 3.4      | ... |
+| 7.2    | 2.1      | 1.2      | 4.1      | ... |
 
 ## Customization
 
@@ -93,7 +84,7 @@ operators = ['+', '-', '*', '/', '||']  # Add or remove operators as needed
 Adjust SISSO parameters in the model initialization:
 ```python
 sm = SissoModel(traindata, operators, None, 2, 4, 10)
-# Parameters: data, operators, constraints, n_dim, n_sisso, n_feature
+# Parameters: data, operators, multi_task, n_expansion, n_term, k
 ```
 
 ## Output
@@ -106,16 +97,10 @@ The scripts generate:
 
 ## Citation
 
-If you use this code in your research, please cite the original SISSO paper and consider referencing this implementation.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+[1] M. Muthyala, F. Sorourifar, J.A. Paulson, TorchSISSO: A PyTorch-based implementation of the sure independence screening and sparsifying operator for efficient and interpretable model discovery, Digital Chemical Engineering, 13 (2024).
 
 ## Support
 
-For questions or issues, please open an issue in the GitHub repository.
+For any questions or issues, please contact us at: dongsuyi@tju.edu.cn
+
+We are happy to assist you with any problems you may encounter during use.
