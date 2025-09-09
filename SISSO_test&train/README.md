@@ -33,6 +33,9 @@ Basic implementation of the SISSO algorithm for training and testing on selected
 - Customizable operator set
 - Detailed parity plot visualization
 
+### 4. full data.xlsx
+It contains all the initial data, consistent with Table S4. For specific data processing procedures, please refer to the methodology described in our work.
+
 ## Requirements
 
 - Python 3.7+
