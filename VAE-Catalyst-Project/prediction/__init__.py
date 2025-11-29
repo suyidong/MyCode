@@ -1,18 +1,24 @@
 """
-Utilities Package
+Inference Package
 
-This package contains data processing and training utility functions
-for the VAE Catalyst Project.
+This package contains prediction and latent space exploration
+scripts for the VAE Catalyst Project.
 """
 
-from .data_utils import fps_sample, prepare_data
-from .training_utils import vae_loss, evaluate_vae
+from .predict_single import load_model, predict, main as predict_main
+from .predict_latent_exploration import (
+    traverse_latent_space_and_predict, 
+    save_results_to_excel, 
+    main as explore_main
+)
 
 __all__ = [
-    'fps_sample',
-    'prepare_data', 
-    'vae_loss',
-    'evaluate_vae',
+    'load_model',
+    'predict',
+    'predict_main',
+    'traverse_latent_space_and_predict',
+    'save_results_to_excel', 
+    'explore_main',
 ]
 
 __version__ = '1.0.0'
