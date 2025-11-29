@@ -148,3 +148,34 @@ The Improved VAE model consists of:
 - **Target**: Single property column named 'Target'
 
 ### Example Data Structure
+
+| Target | Feature1 | Feature2 | Feature3 | ... | 
+|--------|----------|----------|----------|-----|
+| 5.6    | 1.2      | 0.5      | 3.4      | ... |
+| 7.2    | 2.1      | 1.2      | 4.1      | ... |
+
+### Results
+The training process generates:
+- Loss curves (total, MSE, reconstruction, KL divergence)
+  
+- Prediction vs actual scatter plots
+  
+- Error distribution analysis
+  
+- Reconstruction examples
+  
+- Performance metrics (RMSE, MAE, R²)
+
+## Citation
+If you use this code in your research, please cite:
+
+```bibtex
+@software{vae_catalyst_project,
+  title = {VAE Catalyst Project},
+  author = {Dong, Suyi},
+  year = {2025},
+  url = {https://github.com/suyidong/MyCode/VAE-Catalyst-Project},
+}
+```
+
+## Support
