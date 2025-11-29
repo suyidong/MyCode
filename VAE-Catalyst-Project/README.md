@@ -53,7 +53,7 @@ pip install torch scikit-learn pandas numpy matplotlib openpyxl
 
 ```bash
 # Train the model
-python main.py --mode train
+python main.py --mode train --data_path "way\to\your\path"
 ```
 
 ```bash
