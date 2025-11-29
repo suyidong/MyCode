@@ -5,7 +5,7 @@ This package contains prediction and latent space exploration
 scripts for the VAE Catalyst Project.
 """
 
-from .predict_single import load_model, predict, main as predict_main
+from .predict_one import load_model, predict, main as predict_main
 from .predict_latent_exploration import (
     traverse_latent_space_and_predict, 
     save_results_to_excel, 
