@@ -98,7 +98,7 @@ The scripts generate:
 3. Excel files with detailed results
 4. Equation frequency analysis (seed sensitivity script)
 
-## Citation
+## References
 
 [1] M. Muthyala, F. Sorourifar, J.A. Paulson, TorchSISSO: A PyTorch-based implementation of the sure independence screening and sparsifying operator for efficient and interpretable model discovery, Digital Chemical Engineering, 13 (2024).
 
