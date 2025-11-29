@@ -104,8 +104,7 @@ If you use this code in your research, please cite:
   url = {https://github.com/suyidong/MyCode/tree/main/catalyst-vae-prediction},
 }
 ```
-Our manuscript:
-DOI: 
+Our manuscript: 
 
 ## Support
 
