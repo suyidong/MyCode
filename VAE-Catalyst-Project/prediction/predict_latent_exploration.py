@@ -5,7 +5,7 @@ import itertools
 from models.vae_model import ImprovedVAE
 from inference.predict_one import load_model
 
-def traverse_latent_space_and_predict(model, x_scaler, y_scaler,
+def explore_latent_space(model, x_scaler, y_scaler,
                                       latent_dim=5,
                                       points_per_dim=10,
                                       value_range=(-3, 3),
