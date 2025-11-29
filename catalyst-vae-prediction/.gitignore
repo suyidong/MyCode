@@ -1,0 +1,27 @@
+# Data files
+data/raw/
+data/processed/
+
+# Model files
+models/*.pth
+
+# Results
+results/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
