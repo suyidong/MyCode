@@ -21,8 +21,7 @@ catalyst-vae-prediction/
 │ ├── model.py # VAE model architecture
 │ └── utils.py # Utility functions
 ├── data/ # Data directory
-├── models/ # Trained models
-└── tests/ # Test cases
+└── models/ # Trained models used in our manuscript
 ```
 
 ## Installation
@@ -105,6 +104,8 @@ If you use this code in your research, please cite:
   url = {https://github.com/suyidong/MyCode/tree/main/catalyst-vae-prediction},
 }
 ```
+Our manuscript:
+DOI: 
 
 ## Support
 
