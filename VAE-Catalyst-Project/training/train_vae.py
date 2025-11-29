@@ -5,16 +5,76 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error
 
 from models.vae_model import ImprovedVAE
-from utils.data_utils import prepare_data
 from utils.training_utils import vae_loss, evaluate_vae
 
-# Set Chinese font support (optional, can be removed for international use)
-plt.rcParams['font.sans-serif'] = ['SimHei']
-plt.rcParams['axes.unicode_minus'] = False
 
-def train_vae(model, train_loader, optimizer, epochs, beta=1.0, recon_weight=0.5, scheduler=None):
+def train_vae(data_path, device, train_loader, X_train_tensor, y_train_tensor, 
+              X_test_tensor, y_test_tensor, x_scaler, y_scaler, input_dim):
     """
     Train VAE model.
+    
+    Args:
+        data_path (str): Path to data file
+        device: Training device (CPU/GPU)
+        train_loader: DataLoader for training data
+        X_train_tensor: Training features tensor
+        y_train_tensor: Training targets tensor
+        X_test_tensor: Test features tensor
+        y_test_tensor: Test targets tensor
+        x_scaler: Feature scaler
+        y_scaler: Target scaler
+        input_dim (int): Input dimension
+    """
+    import config
+    
+    # Set model parameters from config
+    latent_dim = config.TRAIN_CONFIG['latent_dim']
+    hidden_dims = config.TRAIN_CONFIG['hidden_dims']
+    learning_rate = config.TRAIN_CONFIG['learning_rate']
+    epochs = config.TRAIN_CONFIG['epochs']
+    beta = config.TRAIN_CONFIG['beta']
+    recon_weight = config.TRAIN_CONFIG['recon_weight']
+    scheduler_step = config.TRAIN_CONFIG['scheduler_step']
+    scheduler_gamma = config.TRAIN_CONFIG['scheduler_gamma']
+
+    # Initialize model
+    model = ImprovedVAE(input_dim, latent_dim, hidden_dims).to(device)
+
+    # Set optimizer and scheduler
+    optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=scheduler_step, gamma=scheduler_gamma)
+
+    # Train model
+    print("Starting VAE training...")
+    train_losses, mse_losses, recon_losses, kl_losses, learning_rates = _train_model(
+        model, train_loader, optimizer, epochs, beta, recon_weight, scheduler
+    )
+
+    # Evaluate model
+    print("\n" + "=" * 50)
+    print("Model Evaluation Results")
+    print("=" * 50)
+
+    # Evaluate on training and test sets
+    train_results = evaluate_vae(model, X_train_tensor, y_train_tensor, x_scaler, y_scaler, "Training Set")
+    test_results = evaluate_vae(model, X_test_tensor, y_test_tensor, x_scaler, y_scaler, "Test Set")
+
+    # Save model
+    torch.save({
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'x_scaler': x_scaler,
+        'y_scaler': y_scaler,
+        'input_dim': input_dim,
+        'latent_dim': latent_dim,
+        'hidden_dims': hidden_dims
+    }, config.INFERENCE_CONFIG['model_path'])
+
+    print(f"\nModel saved as '{config.INFERENCE_CONFIG['model_path']}'")
+
+def _train_model(model, train_loader, optimizer, epochs, beta=1.0, recon_weight=0.5, scheduler=None):
+    """
+    Internal training function.
     
     Args:
         model: VAE model to train
@@ -85,62 +145,3 @@ def train_vae(model, train_loader, optimizer, epochs, beta=1.0, recon_weight=0.5
                   f'Recon = {avg_recon:.4f}, KL = {avg_kl:.4f}, LR = {current_lr:.6f}')
 
     return train_losses, mse_losses, recon_losses, kl_losses, learning_rates
-
-def main():
-    """Main training function."""
-    # Set random seeds
-    torch.manual_seed(1895)
-    np.random.seed(1895)
-    
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Using device: {device}")
-
-    # Prepare data
-    data_path = r"D:\3\测试\2\3\fulldata.xlsx"
-    (train_loader, X_train_tensor, y_train_tensor, X_test_tensor, y_test_tensor, 
-     x_scaler, y_scaler, input_dim) = prepare_data(data_path)
-
-    # Set model parameters
-    latent_dim = 5
-    hidden_dims = [64, 32]
-
-    model = ImprovedVAE(input_dim, latent_dim, hidden_dims).to(device)
-
-    # Set optimizer and scheduler
-    optimizer = optim.AdamW(model.parameters(), lr=0.004)
-    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=300, gamma=0.7)
-
-    epochs = 1000
-    beta = 0.01
-    recon_weight = 0.8
-
-    # Train model
-    print("Starting VAE training...")
-    train_losses, mse_losses, recon_losses, kl_losses, learning_rates = train_vae(
-        model, train_loader, optimizer, epochs, beta, recon_weight, scheduler
-    )
-
-    # Evaluate model
-    print("\n" + "=" * 50)
-    print("Model Evaluation Results")
-    print("=" * 50)
-
-    # Evaluate on training and test sets
-    train_results = evaluate_vae(model, X_train_tensor, y_train_tensor, x_scaler, y_scaler, "Training Set")
-    test_results = evaluate_vae(model, X_test_tensor, y_test_tensor, x_scaler, y_scaler, "Test Set")
-
-    # Save model
-    torch.save({
-        'model_state_dict': model.state_dict(),
-        'optimizer_state_dict': optimizer.state_dict(),
-        'x_scaler': x_scaler,
-        'y_scaler': y_scaler,
-        'input_dim': input_dim,
-        'latent_dim': latent_dim,
-        'hidden_dims': hidden_dims
-    }, 'vae_catalyst_model.pth')
-
-    print("\nModel saved as 'vae_catalyst_model.pth'")
-
-if __name__ == "__main__":
-    main()
