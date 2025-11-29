@@ -22,8 +22,6 @@ catalyst-vae-prediction/
 │ └── utils.py # Utility functions
 ├── data/ # Data directory
 ├── models/ # Trained models
-├── notebooks/ # Jupyter notebooks for exploration
-├── results/ # Output results and figures
 └── tests/ # Test cases
 ```
 
