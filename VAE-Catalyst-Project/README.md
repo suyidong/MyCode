@@ -174,7 +174,7 @@ If you use this code in your research, please cite:
   title = {VAE Catalyst Project},
   author = {Dong, Suyi},
   year = {2025},
-  url = {https://github.com/suyidong/MyCode/VAE-Catalyst-Project},
+  url = {https://github.com/suyidong/MyCode/tree/main/VAE-Catalyst-Project},
 }
 ```
 
