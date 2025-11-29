@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import itertools
 from models.vae_model import ImprovedVAE
-from inference.predict_single import load_model
+from inference.predict_one import load_model
 
 def traverse_latent_space_and_predict(model, x_scaler, y_scaler,
                                       latent_dim=5,
