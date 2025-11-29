@@ -28,7 +28,7 @@ VAE-Catalyst-Project/
 - **VAE with Regression**: Combines variational autoencoder with regression head for property prediction
 - **Farthest Point Sampling**: Advanced dataset splitting for better model generalization
 - **Latent Space Exploration**: Systematic traversal of latent space to discover new catalyst candidates
-- **Comprehensive Evaluation**: Multiple metrics and visualization tools for model assessment
+- **Comprehensive Evaluation**: Multiple metrics for model assessment
 
 ## Installation
 
