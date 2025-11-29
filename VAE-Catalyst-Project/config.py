@@ -16,7 +16,7 @@ TRAIN_CONFIG = {
 DATA_CONFIG = {
     'fps_ratio': 0.48,
     'target_column': 'Target',
-    'default_data_path': 'way/to/your/data/fulldata.xlsx'  # 添加默认数据路径
+    'default_data_path': 'way/to/your/data/fulldata.xlsx'  
 }
 
 # Inference configuration
