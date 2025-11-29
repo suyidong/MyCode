@@ -7,8 +7,8 @@ for catalyst property prediction and latent space exploration.
 
 import argparse
 from training.train_vae import main as train_main
-from inference.predict_single import main as predict_main
-from inference.latent_exploration import main as explore_main
+from inference.predict_one import main as predict_main
+from inference.predict_latent_exploration import main as explore_main
 
 def main():
     """Main entry point for VAE Catalyst Project."""
