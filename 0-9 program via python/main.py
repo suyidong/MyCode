@@ -1,5 +1,5 @@
-from models.CNN import CnnNet
-from models.mnist_dataset import MnistData
+from model.CNN import CnnNet
+from model.mnist_dataset import MnistData
 import torch
 import torch.nn as nn
 from torchvision import transforms
